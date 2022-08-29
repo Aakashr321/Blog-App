@@ -1,0 +1,12 @@
+.list {
+    display: inline;
+    text-decoration: none;
+    list-style-type: none;
+}
+
+.listStyleItem {
+    display: inline;
+    font-weight: bold;
+    padding: 8px;
+    border: 2px solid black;
+}
