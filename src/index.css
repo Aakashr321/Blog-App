@@ -7,6 +7,7 @@ body {
   background: -webkit-linear-gradient(left, #e2f3ec, #6c7474);
   background: linear-gradient(to right, #919493, #657374);
   font-family: "Roboto", sans-serif;
+  font-size: 120%;
 }
 
 code {
