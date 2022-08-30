@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
+import styles from  './AddBlog.module.css'
 
 const AddBlog = () => {
   const [title, setTitle] = useState("");
@@ -40,7 +41,7 @@ const AddBlog = () => {
 
   return (
     <>
-      <div className="add-post-container">
+      <div className={styles.addPostContainer}>
         <form onSubmit={handleSubmit}>
           <label htmlFor="title">Enter the title</label>
           <input

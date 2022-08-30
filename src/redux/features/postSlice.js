@@ -6,7 +6,6 @@ const POSTS_URL = "https://jsonplaceholder.typicode.com/posts";
 export const getPosts = createAsyncThunk("posts/getPosts", async () => {
   try {
     const response = await fetch(POSTS_URL);
-   
     return response.json();
   } catch (error) {
     toast.error(error);

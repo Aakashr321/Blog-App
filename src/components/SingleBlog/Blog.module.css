@@ -1,0 +1,17 @@
+.singlePostPage {
+  display: flex;
+  margin-top: 10px;
+  flex-direction: column;
+}
+.commentDiv {
+  margin-top: 10px;
+  padding: 20px;
+}
+
+.commentDiv li {
+  padding: 20px;
+  border: 2px solid darkgrey;
+  color: rgb(36, 35, 35);
+  margin: 5px;
+}
+

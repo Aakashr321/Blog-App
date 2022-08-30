@@ -1,14 +1,9 @@
 import React, { useState } from "react";
-import style from "./Posts.module.css";
+import "./Posts.module.css";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
 function Posts({ posts }) {
-  const [feedbackEdit, setFeedbackEdit] = useState({
-    item: {},
-    edit: false,
-  });
-
   const deletePost = async (id) => {
     try {
       await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
@@ -33,36 +28,49 @@ function Posts({ posts }) {
   };
 
   return (
-    <ul className={style.mainlist}>
-      {posts.map((post) => (
-        <div key={post.id}>
-          <Link to={`${post.id}`}>
-            <li className={style.list}>
-              <p>{post.id}</p>
-              <h3>{post.title}</h3>
-              <p>{post.body.substring(0, 100)}</p>
-            </li>
-          </Link>
-          <div>
-            <button
-              onClick={() => {
-                deletePost(post.id);
-              }}
-            >
-              Delete
-            </button>
-            .
-            <button
-              onClick={() => {
-                editPost(post.id);
-              }}
-            >
-              Edit Post
-            </button>
-          </div>
-        </div>
-      ))}
-    </ul>
+    <table className="tableBlog">
+      <thead className="tbl-header">
+        <tr>
+          <th width="1%">ID</th>
+          <th>Title</th>
+          <th>Visit</th>
+          <th>Blog</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody className="tbl-content">
+        {posts.map((post) => (
+          <tr key={post.id}>
+            <td>{post.id}</td>
+
+            <td>{post.title}</td>
+            <td>
+              <Link to={`${post.id}`}>More Details</Link>
+            </td>
+
+            <td>{post.body.substring(0, 100)}</td>
+
+            <td className="actionButton">
+              <button
+                onClick={() => {
+                  deletePost(post.id);
+                }}
+              >
+                Delete
+              </button>
+
+              <button
+                onClick={() => {
+                  editPost(post.id);
+                }}
+              >
+                Edit Post
+              </button>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   );
 }
 
