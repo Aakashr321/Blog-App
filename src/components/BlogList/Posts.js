@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
 function Posts({ posts }) {
+  const [filteredPosts, setFilteredPosts] = useState(posts);
+
   const deletePost = async (id) => {
     try {
       const response = await fetch(
@@ -16,6 +18,8 @@ function Posts({ posts }) {
     } catch (error) {
       toast.error("Something went wrong");
     }
+
+    setFilteredPosts(filteredPosts.filter((item) => item.id != id));
   };
 
   const editPost = async (id) => {
@@ -52,7 +56,7 @@ function Posts({ posts }) {
         </tr>
       </thead>
       <tbody className="tbl-content">
-        {posts.map((post) => (
+        {filteredPosts.map((post) => (
           <tr key={post.id}>
             <td>{post.id}</td>
 

@@ -7,7 +7,6 @@ export const getPosts = createAsyncThunk("posts/getPosts", async () => {
   try {
     const response = await fetch(POSTS_URL);
     toast("The response status code is " + response.status);
-
     return response.json();
   } catch (error) {
     toast.error(error);
