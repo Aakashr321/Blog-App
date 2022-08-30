@@ -6,9 +6,13 @@ import { toast } from "react-toastify";
 function Posts({ posts }) {
   const deletePost = async (id) => {
     try {
-      await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
-        method: "DELETE",
-      });
+      const response = await fetch(
+        `https://jsonplaceholder.typicode.com/posts/${id}`,
+        {
+          method: "DELETE",
+        }
+      );
+      toast("The response status code is " + response.status);
     } catch (error) {
       toast.error("Something went wrong");
     }
@@ -16,12 +20,21 @@ function Posts({ posts }) {
 
   const editPost = async (id) => {
     try {
-      await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        `https://jsonplaceholder.typicode.com/posts/${id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            title: "Edited Post",
+            body: "This post is edited",
+            userId: Math.random().toString(36).slice(2),
+          }),
+        }
+      );
+      toast("The response status code is " + response.status);
     } catch (error) {
       toast.error("Something went wrong");
     }

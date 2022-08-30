@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
-import styles from  './AddBlog.module.css'
+import styles from "./AddBlog.module.css";
 
 const AddBlog = () => {
   const [title, setTitle] = useState("");
@@ -31,7 +31,7 @@ const AddBlog = () => {
           },
         }
       );
-     
+      toast(`The response status is `+response.status);
     } catch (error) {
       toast.error("Oops something went wrong, Try again");
     }
