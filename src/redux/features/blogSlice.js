@@ -6,7 +6,7 @@ export const getBlogs = createAsyncThunk("blogs/getBlogs", async ({ id }) => {
     const response = await fetch(
       `https://jsonplaceholder.typicode.com/posts/${id}`
     );
-    toast("The response status code is " + response.status);
+    // toast("The response status code is " + response.status);
 
     return response.json();
   } catch (error) {
